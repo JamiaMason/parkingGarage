@@ -24,6 +24,9 @@
     # parkingSpace - list
     # currentTicket - dictionary
 
+# Added some text here ------------------------------------
+
+
 class ParkingGarage():
 
     # defining parameters
