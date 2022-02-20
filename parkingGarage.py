@@ -27,7 +27,10 @@
 # Added some text here ------------------------------------
 
 
-from email import message
+import car_image
+image = car_image
+image.playImage()
+
 
 
 class ParkingGarage():
@@ -65,7 +68,7 @@ class ParkingGarage():
         
         # if payment variable is not empty (ticket has been paid) display message: 15 minutes to leave
         if self.currentTicket.get(spot)== "unpaid": 
-            print("You're ticket has been paid, you need to leave")
+            print("You're ticket has been paid, you have 15 minutes to leave.")
             # update currentTicket dict key "paid" to true
             self.currentTicket[spot]= 'paid'
 
@@ -80,7 +83,8 @@ class ParkingGarage():
         vacant = int(input('What is your ticket number? '))
             # when paid display: Thank you, have a nice day
         if self.currentTicket[vacant] == "paid":
-            print("Thank you have a nice day.")
+            image.playImage()
+            print("                Thank you have a nice day.")
         # update tickets list to increase by 1
             self.tickets.append(vacant)
             print(self.tickets)
@@ -93,10 +97,12 @@ class ParkingGarage():
 
     def runParkingGarage(self):
         while True:
-            response = input('What do you want to do? (T)Take Ticket/ (P)Pay for Ticket/ (L)Leave Garage/ (Q)Quit')
+            response = input('What do you want to do? (T)Take Ticket/ (P)Pay for Ticket/ (L)Leave Garage/ (Q)Quit > ')
             
+
             if response.lower().strip() == 'q':          
-                print('Thanks for shopping')
+                image.playImage()
+                print('                Thanks for your interest, we look forward to your business.')
                 break
             elif response.lower().strip() == 't':
                 ParkingGarage.takeTicket(self)
