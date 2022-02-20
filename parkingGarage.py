@@ -13,7 +13,7 @@ class ParkingGarage():
         self.parkingSpace = [1,2,3,4,5,6,7,8,9]
         self.currentTicket = {}
 
-
+    # April was the driver, Chris and Jamia Navigators
     def takeTicket(self):
         if self.tickets:
             # display ticket number 
@@ -49,8 +49,9 @@ class ParkingGarage():
             # update update parkingSpaces list to increase by 1
             self.parkingSpace.append(spot)
 
+    # April was the driver, Chris and Jamia Navigators
     def leaveGarage(self):
-        # if ticket paid, dict value == True display: Thank you, have a nice day
+        # if ticket paid, dict value == True display: Thank you, have a nice day 
         vacant = int(input('What is your ticket number? '))
         # when paid display: Thank you, have a nice day
         if self.currentTicket[vacant] == "paid":
