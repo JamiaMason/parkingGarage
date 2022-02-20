@@ -1,6 +1,7 @@
 # Parking Garage Project
 
 # imports function from another file to have a cool car image 
+
 import car_image
 image = car_image
 image.playImage()
@@ -21,46 +22,50 @@ class ParkingGarage(): # Chris driver, April and Jamia Navigators, general outli
             
             # add to dictionary
             self.currentTicket[self.tickets[0]] = 'unpaid'
-            print(self.currentTicket)
+            # print(self.currentTicket) testing:checks that ticket number shows as expected
             
             # tickets reduce by 1
-            print(self.tickets.pop(0))
+            self.tickets.pop(0)
 
             # parkingSpaces reduce by 1
-            print(self.parkingSpace.pop(0))
+            self.parkingSpace.pop(0)
         else:
             # print message if no tickets available
             print("Garage is full, Thank you!")
+
 
     # changes library value to 'paid' and adds parkingSpace value back to list
     def payForParking(self): # Jamia driver, April and Chris navigators <-----
         # prompt for value (ticket number) to store in payment variable
         spot = int(input('What is your ticket number? '))
-        print(type(spot))
-        
-        
+        # print(type(spot)) testing:checks that input was converted to an int
         # if payment variable is not empty (ticket has been paid) display message: 15 minutes to leave
         if self.currentTicket.get(spot) == "unpaid": 
             print("You're ticket has been paid, you have 15 minutes to leave.")
             # update currentTicket dict key "paid" to true
             self.currentTicket[spot] = 'paid'
+            # print(self.currentTicket)
 
-            print(self.currentTicket)
             # update update parkingSpaces list to increase by 1
             self.parkingSpace.append(spot)
 
-    # 
+
+    # checks if ticket number is in library and then 
     def leaveGarage(self): # April driver, Chris and Jamia Navigators <-----
         # if ticket paid, dict value == True display: Thank you, have a nice day 
         vacant = int(input('What is your ticket number? '))
         # when paid display: Thank you, have a nice day
-        if self.currentTicket[vacant] == "paid":
+        if vacant not in self.currentTicket: # check if ticket number is in the library
+            print('Invalid ticket number.')
+        elif self.currentTicket[vacant] == "paid":
             image.playImage()
             print("                Thank you have a nice day.")
         # update tickets list to increase by 1
             self.tickets.append(vacant)
-            print(self.tickets)
-            print(self.parkingSpace)
+            del self.currentTicket[vacant] # removes library associated with that ticket
+            # print(self.currentTicket)
+            # print(self.tickets)
+            # print(self.parkingSpace)
         # if not paid display: message to pay ticket before leaving
         elif self.currentTicket[vacant] == "unpaid":
             print("You must pay your ticket before leaving.")
@@ -81,12 +86,10 @@ class ParkingGarage(): # Chris driver, April and Jamia Navigators, general outli
                 ParkingGarage.takeTicket(self)
             # Pay for ticket
             elif response.lower().strip() == 'p':
-                ParkingGarage.payForParking(self) 
+                ParkingGarage.payForParking(self)
             # Leave Garage
             elif response.lower().strip() == 'l':
                 ParkingGarage.leaveGarage(self)
-
-        return
 
 # runs the program
 run = ParkingGarage()
