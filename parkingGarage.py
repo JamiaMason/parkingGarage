@@ -5,7 +5,7 @@ import car_image
 image = car_image
 image.playImage()
 
-class ParkingGarage():
+class ParkingGarage(): # Chris driver, April and Jamia Navigators, general outline of the class <-----
 
     # defining parameters
     def __init__(self):
@@ -13,8 +13,8 @@ class ParkingGarage():
         self.parkingSpace = [1,2,3,4,5,6,7,8,9]
         self.currentTicket = {}
 
-    # April was the driver, Chris and Jamia Navigators
-    def takeTicket(self):
+    # gives a ticket, adds it to the library and adjusts tickets and parkingSpace lists
+    def takeTicket(self): # April driver, Chris and Jamia Navigators <-----
         if self.tickets:
             # display ticket number 
             print(f'Your ticket number is {self.tickets[0]}')
@@ -32,8 +32,8 @@ class ParkingGarage():
             # print message if no tickets available
             print("Garage is full, Thank you!")
 
-
-    def payForParking(self):
+    # changes library value to 'paid' and adds parkingSpace value back to list
+    def payForParking(self): # Jamia driver, April and Chris navigators <-----
         # prompt for value (ticket number) to store in payment variable
         spot = int(input('What is your ticket number? '))
         print(type(spot))
@@ -49,8 +49,8 @@ class ParkingGarage():
             # update update parkingSpaces list to increase by 1
             self.parkingSpace.append(spot)
 
-    # April was the driver, Chris and Jamia Navigators
-    def leaveGarage(self):
+    # 
+    def leaveGarage(self): # April driver, Chris and Jamia Navigators <-----
         # if ticket paid, dict value == True display: Thank you, have a nice day 
         vacant = int(input('What is your ticket number? '))
         # when paid display: Thank you, have a nice day
@@ -67,7 +67,7 @@ class ParkingGarage():
         
 
     # menu for calling all methods defined in our class
-    def runParkingGarage(self):
+    def runParkingGarage(self): # Chris driver, April and Jamia Navigators <-----
         while True:
             response = input('What do you want to do? (T)Take Ticket/ (P)Pay for Ticket/ (L)Leave Garage/ (Q)Quit > ')
             
