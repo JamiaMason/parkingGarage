@@ -27,6 +27,9 @@
 # Added some text here ------------------------------------
 
 
+from email import message
+
+
 class ParkingGarage():
 
     # defining parameters
@@ -53,11 +56,17 @@ class ParkingGarage():
 
     def payForParking(self):
         # prompt for value (ticket number) store in payment variable
-        spot = input('What is your ticket number? ')
+        spot = int(input('What is your ticket number? '))
+        print(type(spot))
         
         # if payment variable is not empty (ticket has been paid) display message: 15 minutes to leave
-        if self.currentTicket[spot]:
-            pass
+        if self.currentTicket.get(spot)== "unpaid": 
+            print("You're ticket has been paid, you need to leave")
+            self.currentTicket[spot]= 'paid'
+            print(self.currentTicket)
+        else:
+            print("jkkiij")
+        
         
         # update currentTicket dict key "paid" to true
         
