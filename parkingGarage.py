@@ -40,18 +40,21 @@ class ParkingGarage():
 
 
     def takeTicket(self):
-        # display ticket number 
-        print(f'Your ticket number is {self.tickets[0]}')
-        
-        # add to dictionary
-        self.currentTicket[self.tickets[0]] = 'unpaid'
-        print(self.currentTicket)
-        
-        # tickets reduce by 1
-        print(self.tickets.pop(0))
+        if self.tickets:
+            # display ticket number 
+            print(f'Your ticket number is {self.tickets[0]}')
+            
+            # add to dictionary
+            self.currentTicket[self.tickets[0]] = 'unpaid'
+            print(self.currentTicket)
+            
+            # tickets reduce by 1
+            print(self.tickets.pop(0))
 
-        # parkingSpaces reduce by 1
-        print(self.parkingSpace.pop(0))
+            # parkingSpaces reduce by 1
+            print(self.parkingSpace.pop(0))
+        else:
+            print("Garage is full, Thank you!")
 
 
     def payForParking(self):
@@ -59,21 +62,33 @@ class ParkingGarage():
         spot = int(input('What is your ticket number? '))
         print(type(spot))
         
+        
         # if payment variable is not empty (ticket has been paid) display message: 15 minutes to leave
         if self.currentTicket.get(spot)== "unpaid": 
             print("You're ticket has been paid, you need to leave")
             # update currentTicket dict key "paid" to true
             self.currentTicket[spot]= 'paid'
+
             print(self.currentTicket)
+        # update update parkingSpaces list to increase by 1
+            self.parkingSpace.append(spot)
+        
 
 
     def leaveGarage(self):
         # if ticket paid, dict value == True display: Thank you, have a nice day
-        # if not paid display: input for payment
+        vacant = int(input('What is your ticket number? '))
             # when paid display: Thank you, have a nice day
-        # update update parkingSpaces list to increase by 1
+        if self.currentTicket[vacant] == "paid":
+            print("Thank you have a nice day.")
         # update tickets list to increase by 1
-        pass
+            self.tickets.append(vacant)
+            print(self.tickets)
+            print(self.parkingSpace)
+        # if not paid display: input for payment
+        elif self.currentTicket[vacant] == "unpaid":
+            print("enter payment information")
+        
 
 
     def runParkingGarage(self):
