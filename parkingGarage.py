@@ -38,21 +38,21 @@ class ParkingGarage():
         self.parkingSpace = [1,2,3,4,5,6,7,8,9]
         self.currentTicket = {}
 
+
     def takeTicket(self):
         # display ticket number 
         print(f'Your ticket number is {self.tickets[0]}')
-        # add to dictionary
         
-        self.currentTicket[self.tickets[0]]= 'unpaid'
+        # add to dictionary
+        self.currentTicket[self.tickets[0]] = 'unpaid'
         print(self.currentTicket)
+        
         # tickets reduce by 1
         print(self.tickets.pop(0))
 
         # parkingSpaces reduce by 1
         print(self.parkingSpace.pop(0))
 
-
-        
 
     def payForParking(self):
         # prompt for value (ticket number) store in payment variable
@@ -62,14 +62,10 @@ class ParkingGarage():
         # if payment variable is not empty (ticket has been paid) display message: 15 minutes to leave
         if self.currentTicket.get(spot)== "unpaid": 
             print("You're ticket has been paid, you need to leave")
+            # update currentTicket dict key "paid" to true
             self.currentTicket[spot]= 'paid'
             print(self.currentTicket)
-        else:
-            print("jkkiij")
-        
-        
-        # update currentTicket dict key "paid" to true
-        
+
 
     def leaveGarage(self):
         # if ticket paid, dict value == True display: Thank you, have a nice day
